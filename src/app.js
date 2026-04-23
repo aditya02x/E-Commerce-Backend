@@ -6,7 +6,17 @@ import authRoutes from "./routes/authRoutes.js";
 const app = express();
 
 
-app.use(cors());
+const allowedOrigins = [
+  "http://localhost:5173", // local frontend
+  "http://localhost:3000",
+  "https://e-commerce-frontend-rho-one.vercel.app/"
+];
+pp.use(
+  cors({
+    origin: allowedOrigins,
+    credentials: true
+  })
+);
 app.use(express.json());
 
 app.use("/api/products", productRoutes);
